@@ -50,6 +50,9 @@ function rest_auth_registration_resend_email_create(payload) {
 function rest_auth_registration_verify_email_create(payload) {
   return proxyconndemoAPI.post(`/rest-auth/registration/verify-email/`, payload)
 }
+function testconnector_get_test_read(payload) {
+  return proxyconndemoAPI.get(`/api/v1/connectors/testconnector/test/`)
+}
 export const apiService = {
   api_v1_login_create,
   api_v1_signup_create,
@@ -65,5 +68,6 @@ export const apiService = {
   trello_get_search_read,
   rest_auth_password_reset_confirm_create,
   rest_auth_registration_resend_email_create,
-  rest_auth_registration_verify_email_create
+  rest_auth_registration_verify_email_create,
+  testconnector_get_test_read
 }

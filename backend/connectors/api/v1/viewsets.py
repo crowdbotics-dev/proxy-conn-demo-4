@@ -72,3 +72,20 @@ class TrelloViewSet(BaseConnectorViewSet):
             "/search", request_type="get", payload=payload, params=params
         )
         return Response(data)
+
+
+class TestConnectorViewSet(BaseConnectorViewSet):
+    PASSWORD = settings.TEST_CONNECTOR_PASSWORD
+    USERNAME = settings.TEST_CONNECTOR_USERNAME
+    BASE_URL = "https://tt.ss.sd"
+    AUTH_TYPE = "basic"
+    IDENTIFIER = "TEST_CONNECTOR"
+
+    @action(detail=False, methods=["get"], url_path="test")
+    def test(self, request, *args, **kwargs):
+        params = request.query_params
+        payload = request.data
+        data = self._api_call(
+            "/test", request_type="get", payload=payload, params=params
+        )
+        return Response(data)
